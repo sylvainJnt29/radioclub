@@ -1,0 +1,9 @@
+.container{
+    background-color:rgba(128, 128, 128, 0.329);
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 5px;
+}
+a,p{
+     color:  rgb(0, 87, 128);
+}
