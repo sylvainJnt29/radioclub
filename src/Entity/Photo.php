@@ -4,9 +4,13 @@ namespace App\Entity;
 
 use App\Repository\PhotoRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=PhotoRepository::class)
+ * @Vich\Uploadable
  */
 class Photo
 {
@@ -23,9 +27,19 @@ class Photo
     private $image;
 
     /**
+     * @Vich\UploadableField(mapping="photo_images", fileNameProperty="image")
+     */
+    private $imageFile;
+
+    /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="photos")
      */
     private $user;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $updated_at;
 
     public function getId(): ?int
     {
@@ -52,6 +66,18 @@ class Photo
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updated_at;
+    }
+
+    public function setUpdatedAt(?\DateTimeInterface $updated_at): self
+    {
+        $this->updated_at = $updated_at;
 
         return $this;
     }
