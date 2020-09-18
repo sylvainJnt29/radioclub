@@ -2,11 +2,79 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Bienvenue !{% endblock %}</title>
+        <link rel="stylesheet" type="text/css" href="{{asset('/style/style.css')}}">
+        <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
+        <script src="https://kit.fontawesome.com/22d71e1744.js" crossorigin="anonymous"></script>
         {% block stylesheets %}{% endblock %}
+
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {# {{ render(controller("App\\Controller\\HeaderController::index")) }} #}
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="{{path('accueil')}}">
+                <i class="fas fa-home"></i>
+                Accueil
+                </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarColor02">
+                <ul class="navbar-nav mr-auto">
+                    <!-- <li class="nav-item active">
+                        <a class="nav-link" href="{{path('accueil')}}"><i class="fas fa-home"></i>Accueil<span class="sr-only">(current)</span></a>
+                    </li> -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Les articles</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="{{path('articles')}}">Les articles</a>
+                        {# {% if user and (user.role.label == 'ROLE_ADMIN') %}    #}
+                            <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{path('article_index')}}">Administration des articles</a>
+                            </div>
+                        {# {% endif %}  #}
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Les photos</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="{{path('photos')}}">Les photos</a>
+                        {# {% if user and (user.role.label == 'ROLE_ADMIN') %} #}
+                            <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{path('admin_photos')}}">Administration des photos</a>
+                            </div>
+                        {# {% endif %}  #}
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Contact</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="{{path('contact_index')}}">Contact</a>
+                        {# {% if user and (user.role.label == 'ROLE_ADMIN') %}  #}
+                            <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{path('contact_index')}}">Administration des contacts</a>
+                            </div>
+                        {# {% endif %}  #}
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{path('app_login')}}">Connexion</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{path('app_logout')}}">déconnexion</a>
+                    </li>
+                </ul>
+                <!-- <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Chercher...">
+                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">GO !</button>
+                </form> -->
+            </div>
+        </nav>
+        <div class="container">
+            <h1 class="border border-dark rounded text-white m-2 p-2 mt-5 text-center bg-info">{% block myTitle %}{% endblock %}</h1>
+            {% block body %}{% endblock %}
+        </div>
         {% block javascripts %}{% endblock %}
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     </body>
 </html>
