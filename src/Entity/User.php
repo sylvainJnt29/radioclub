@@ -173,4 +173,15 @@ class User implements UserInterface // "implements UserInterface ajouté à la m
 
         return $this;
     }
+
+    /**
+     * 
+     * 
+     */
+    public function __toString(){
+        // to show the name of the Category in the select
+        return $this->username;
+        // to show the id of the Category in the select
+        // return $this->id;
+    }
 }

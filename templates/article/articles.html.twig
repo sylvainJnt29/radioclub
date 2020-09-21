@@ -5,11 +5,7 @@
 {% block myTitle %}Les articles{% endblock %}
 
 {% block body %}
-{% for message in app.flashes('success') %}
-    <div class="alert alert-success">
-        {{message}}
-    </div>
-{% endfor %}
+
 <div class="container">
         {% for article in articles %}
             <div class="row row-cols-1 row-cols-lg-2">
@@ -19,17 +15,7 @@
                             <h5 class="card-title">{{article.title}}</h5>
                             <h6 class="card-title">{{article.createdAt|format_datetime(locale='fr')}}</h6>
                             <p class="card-text text-break">{{article.text}}</p>
-                        {% if admin %}
-                            <div class="row no-gutters">
-                                <a href="{{path('creation_article')}}" class="col btn btn-success">ajouter</a>
-                                <a href="{{path('modif_articles',{'id':article.id})}}" class="col btn btn-warning">Modifier</a>
-                                <form method="post" action="{{path('suppression_article', {'id':article.id})}}" class="col" onsubmit="return confirm('Voulez vous vraiement supprimer ?');">
-                                    <input type="hidden" name="_method" value="SUP">
-                                    <input type="hidden" name="_token" value="{{csrf_token('SUP' ~ article.id)}}">
-                                    <input type="submit" value="supprimer" class="btn btn-danger">
-                                </form>
-                            </div>
-                        {% endif %}
+            
                     </div>
                 </div>
             </div>

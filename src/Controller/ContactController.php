@@ -39,6 +39,7 @@ class ContactController extends AbstractController
             $entityManager->persist($contact);
             $entityManager->flush();
 
+            $this->addFlash('success', "L'action a bien été effectuée");
             return $this->redirectToRoute('contact_index');
         }
 
@@ -69,6 +70,7 @@ class ContactController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash('success', "L'action a bien été effectuée");
             return $this->redirectToRoute('contact_index');
         }
 
@@ -89,6 +91,7 @@ class ContactController extends AbstractController
             $entityManager->flush();
         }
 
+        $this->addFlash('success', "L'action a bien été effectuée");
         return $this->redirectToRoute('contact_index');
     }
 }

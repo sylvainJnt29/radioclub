@@ -11,12 +11,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/article")
+ * @Route("/admin/articles")
  */
 class ArticleController extends AbstractController
 {
     /**
-     * @Route("/", name="article_index", methods={"GET"})
+     * @Route("/", name="articles_admin", methods={"GET"})
      */
     public function index(ArticleRepository $articleRepository): Response
     {
@@ -39,7 +39,8 @@ class ArticleController extends AbstractController
             $entityManager->persist($article);
             $entityManager->flush();
 
-            return $this->redirectToRoute('article_index');
+            $this->addFlash('success', "L'action a bien été effectuée");
+            return $this->redirectToRoute('articles_admin');
         }
 
         return $this->render('article/new.html.twig', [
@@ -68,8 +69,8 @@ class ArticleController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('article_index');
+            $this->addFlash('success', "L'action a bien été effectuée");
+            return $this->redirectToRoute('articles_admin');
         }
 
         return $this->render('article/edit.html.twig', [
@@ -89,6 +90,7 @@ class ArticleController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('article_index');
+        $this->addFlash('success', "L'action a bien été effectuée");
+        return $this->redirectToRoute('articles_admin');
     }
 }

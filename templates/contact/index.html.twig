@@ -3,6 +3,12 @@
 {% block title %}Contact index{% endblock %}
 
 {% block body %}
+<div class="container">
+    {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{message}}
+            </div>
+    {% endfor %}
     <h1>Contact index</h1>
 
     <table class="table">
@@ -40,4 +46,5 @@
     </table>
 
     <a href="{{ path('contact_new') }}">Create new</a>
+</div>
 {% endblock %}

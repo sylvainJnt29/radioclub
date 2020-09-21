@@ -12,12 +12,12 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
- * @Route("/photo")
+ * @Route("/admin/photo")
  */
 class PhotoController extends AbstractController
 {
     /**
-     * @Route("/", name="photos", methods={"GET"})
+     * @Route("/", name="photos_admin", methods={"GET"})
      */
     public function index(PhotoRepository $photoRepository,PaginatorInterface $paginatorInterface, Request $request): Response
     {
@@ -46,7 +46,8 @@ class PhotoController extends AbstractController
             $entityManager->persist($photo);
             $entityManager->flush();
 
-            return $this->redirectToRoute('photo_index');
+            $this->addFlash('success', "L'action a bien été effectuée");
+            return $this->redirectToRoute('photos_admin');
         }
 
         return $this->render('photo/new.html.twig', [
@@ -76,7 +77,8 @@ class PhotoController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('photo_index');
+            $this->addFlash('success', "L'action a bien été effectuée");
+            return $this->redirectToRoute('photos_admin');
         }
 
         return $this->render('photo/edit.html.twig', [
@@ -96,6 +98,7 @@ class PhotoController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('photo_index');
+        $this->addFlash('success', "L'action a bien été effectuée");
+        return $this->redirectToRoute('photos_admin');
     }
 }

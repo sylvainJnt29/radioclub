@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}F6KSV Bienvenue !{% endblock %}
+
+{% block myTitle %}Les photos{% endblock %}
+
+{% block body %}
+{% for message in app.flashes('success') %}
+    <div class="alert alert-success">
+        {{message}}
+    </div>
+{% endfor %}
+    {% for photo in photos %}
+        <div class="container">
+            <div class="row row-cols-1 row-cols-md-3">
+                <div class="col my-5">
+                    <div class="card h-100">
+                        <a href="{{asset('images/' ~ photo.image)}}" target="_blank"><img src="{{asset('images/' ~ photo.image)}}" class="card-img-top" alt="..."></a>
+                        <!-- {% if admin %}
+                        <div class="row no-gutters">
+                            <a href="{{path('photo_new')}}" class="col btn btn-success">ajouter</a>
+                            <a href="{{path('photo_edit',{'id':photo.id})}}" class="col btn btn-warning">Modifier</a>
+                            <form method="post" action="{{path('photo_delete', {'id':photo.id})}})}}" class="col" onsubmit="return confirm('Voulez vous vraiement supprimer ?');">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="hidden" name="_token" value="{{csrf_token('DELETE' ~ photo.id)}}">
+                                <input type="submit" value="supprimer" class="col btn btn-danger">
+                            </form>
+                        </div>
+                        {% endif %} -->
+                    </div>
+                </div>
+            </div>
+                {% endfor %}
+                <div class="pagination mt-4 justify-content-center">
+                    {{knp_pagination_render(photos)}}
+                </div>
+        </div>
+{% endblock %}
+
+
