@@ -7,19 +7,19 @@
 {% block body %}
 
 <div class="container">
-        {% for article in articles %}
-            <div class="row row-cols-1 row-cols-lg-2">
-                <div class="col mb-4">
-                    <div class="card h-100 " style="width: 200px;">
-                        <a href="{{asset('images/' ~ article.image)}}" target="_blank"><img src="{{asset('images/' ~ article.image)}}" class="card-img-top" alt="..." style="height: 200px; width: 200px;"></a>
+        <div class="row">
+            {% for article in articles %}
+                <div class="col-4 p-1 m-0">
+                    <div class="card h-100 ">
+                        <a href="{{asset('images/' ~ article.image)}}" target="_blank"><img src="{{asset('images/' ~ article.image)}}" class="card-img-top" alt="..." style="max-height: 200px; max-width: 100%;"></a>
                             <h5 class="card-title">{{article.title}}</h5>
                             <h6 class="card-title">{{article.createdAt|format_datetime(locale='fr')}}</h6>
-                            <p class="card-text text-break">{{article.text}}</p>
+                            <p class="card-text text-break">{{article.text | truncate(10)}}</p>
             
                     </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
 
         <div class="pagination mt-4 justify-content-center">
             {{knp_pagination_render(articles)}}

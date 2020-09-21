@@ -27,15 +27,14 @@ class ArticleRepository extends ServiceEntityRepository
         return $query->getQuery();
     }
 
-    // public function selectLasts3Articles() 
-    // {   
-    //     return $this->createQueryBuilder('a')
-
-    //     ->setMaxResults(3)
-    //     ->orderBy('a.id','DESC')
-    //     ;
+    public function selectLasts3Articles() 
+    {   
+        $query = $this->createQueryBuilder('a');
+        $query->orderBy('a.id','ASC');
+        $query->setMaxResults(3);
+        return $query->getQuery()->execute();
         
-    // }
+    }
 
     // /**
     //  * @return Article[] Returns an array of Article objects

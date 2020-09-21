@@ -51,34 +51,20 @@
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae dolorem quo distinctio fuga aspernatur et nostrum odio, adipisci in molestiae incidunt facere quos, iure ipsum consequuntur sequi at exercitationem ut?</p>
     
         <div class="container">
-            <div class="row row-cols-1 row-cols-md-3">
-                <div class="col mb-4">
+             <div class="row row-cols-1 row-cols-md-3"> 
+                {% for article in articles %}
+ 
+                 <div class="col mb-4">
                     <div class="card h-100">
-                        <a href="{{asset('images/logo_f6ksv.png')}}" target="_blank"><img src="{{asset('images/logo_f6ksv.png')}}" class="card-img-top" alt="..."></a>
+                        <a href="{{asset('images/' ~ article.image )}}" target="_blank"><img src="{{asset('images/' ~ article.image)}}" class="card-img-top" alt="..."></a>
                             <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <h5 class="card-title">{{article.title}}</h5>
+                                <h4 class="card-title">{{article.createdAt | format_datetime(locale='fr')}}</h4>
+                                <p class="card-text">{{article.text}}</p>
                             </div>
                     </div>
                 </div>
-                <div class="col mb-4">
-                    <div class="card h-100">
-                        <a href="{{asset('images/logo_f6ksv.png')}}" target="_blank"><img src="{{asset('images/logo_f6ksv.png')}}" class="card-img-top" alt="..."></a>
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a short card.</p>
-                            </div>
-                    </div>
-                </div>
-                <div class="col mb-4">
-                    <div class="card h-100">
-                        <a href="{{asset('images/logo_f6ksv.png')}}" target="_blank"><img src="{{asset('images/logo_f6ksv.png')}}" class="card-img-top" alt="..."></a>
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                            </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>

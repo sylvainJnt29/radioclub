@@ -52,7 +52,6 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
             Security::LAST_USERNAME,
             $credentials['username']
         );
-
         return $credentials;
     }
 
@@ -69,7 +68,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
             // fail authentication with a custom error
             throw new CustomUserMessageAuthenticationException('Username could not be found.');
         }
-
+        // dd($user);
         return $user;
     }
 
@@ -78,11 +77,11 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
         // Check the user's password or other credentials and return true or false
         // If there are no credentials to check, you can just return true
         // throw new \Exception('TODO: check the credentials inside '.__FILE__);
-        return password_verify($credentials['password'],$user->getPassword());
+        $res = password_verify($credentials['password'],$user->getPassword());
+        return $res;
         
         // return $this->passwordEncoder->isPasswordValid($user, $credentials['password']);
 
-        // return $this->passwordEncoder->isPasswordValid($utilisateur, $credentials['password']);
     }
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $providerKey)
@@ -91,8 +90,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
             return new RedirectResponse($targetPath);
         }
 
-        // For example : return new RedirectResponse($this->urlGenerator->generate('some_route'));
-        throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
+        return new RedirectResponse($this->urlGenerator->generate('accueil'));
     }
 
     protected function getLoginUrl()

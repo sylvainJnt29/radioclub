@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -39,16 +40,24 @@ class User implements UserInterface // "implements UserInterface ajouté à la m
      * @ORM\OneToMany(targetEntity=Photo::class, mappedBy="user")
      */
     private $photos;
-
     /**
-     * @ORM\ManyToOne(targetEntity=Role::class, inversedBy="users")
+     * @ORM\Column(type="string", length=255)
      */
-    private $roles;
+    private $role;
+
 
     public function __construct()
     {
         $this->articles = new ArrayCollection();
         $this->photos = new ArrayCollection();
+        $this->roles = new ArrayCollection();
+    }
+    
+    public function __toString(){
+        // to show the name of the Category in the select
+        return $this->username;
+        // to show the id of the Category in the select
+        // return $this->id;
     }
 
     public function getId(): ?int
@@ -142,14 +151,15 @@ class User implements UserInterface // "implements UserInterface ajouté à la m
         return $this;
     }
 
-    public function getRoles(): ?Role
+    public function getRoles(): array
     {
-        return $this->roles;
+        // dd($this->roles);
+        return [$this->role];
     }
 
-    public function setRoles(?Role $roles): self
+    public function setRoles(?string $role): string
     {
-        $this->roles = $roles;
+        $this->role = $role;
 
         return $this;
     }
@@ -174,14 +184,4 @@ class User implements UserInterface // "implements UserInterface ajouté à la m
         return $this;
     }
 
-    /**
-     * 
-     * 
-     */
-    public function __toString(){
-        // to show the name of the Category in the select
-        return $this->username;
-        // to show the id of the Category in the select
-        // return $this->id;
-    }
 }
