@@ -64,6 +64,22 @@ class MainController extends AbstractController
     }
 
     /**
+     * @Route("/", name="photos_admin", methods={"GET"})
+     */
+    public function index_photos(PhotoRepository $photoRepository,PaginatorInterface $paginatorInterface, Request $request): Response
+    {
+        $photos = $paginatorInterface->paginate(
+        $photoRepository->findAllWithPagination(),
+        $request->query->getInt('page',1),
+        6
+        );
+        return $this->render('photo/index.html.twig', [
+            'photos' => $photos,
+            'admin' => false
+        ]);
+    }
+
+    /**
      * @Route("/photos", name="photos")
      */
     public function admin_photos(PhotoRepository $photoRepository, PaginatorInterface $paginatorInterface, Request $request)

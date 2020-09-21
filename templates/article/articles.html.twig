@@ -10,8 +10,8 @@
         {% for article in articles %}
             <div class="row row-cols-1 row-cols-lg-2">
                 <div class="col mb-4">
-                    <div class="card h-100 " style="width: 300px;">
-                        <a href="{{asset('images/' ~ article.image)}}" target="_blank"><img src="{{asset('images/' ~ article.image)}}" class="card-img-top" alt="..."></a>
+                    <div class="card h-100 " style="width: 200px;">
+                        <a href="{{asset('images/' ~ article.image)}}" target="_blank"><img src="{{asset('images/' ~ article.image)}}" class="card-img-top" alt="..." style="height: 200px; width: 200px;"></a>
                             <h5 class="card-title">{{article.title}}</h5>
                             <h6 class="card-title">{{article.createdAt|format_datetime(locale='fr')}}</h6>
                             <p class="card-text text-break">{{article.text}}</p>

@@ -16,6 +16,29 @@
                 <td>{{ photo.image }}</td>
             </tr>
             <tr>
+                <th>Visuel</th>
+                <td><h1>PROUT</h1></td>
+                {% for photo in photo %}
+                        <td>
+                            <td><div class="image_visu"><img src="{{asset('images/' ~ photo.image)}}" alt="" style="width: 200px;"></div></td>
+                        </td>
+                {% endfor %}
+                 {# {% for photo in photos %}
+                             <h1>prout</h1> 
+                    <div>
+                        <td>
+                             <a href="{{asset('images/' ~ photo.image ~ '.png')}}" target="_blank"><img src="{{asset('images/' ~ photo.image ~ '.png')}}" class="card-img-top" alt="..."></a> 
+                            <div class="col-6">
+                                {{form_start(form)}}
+                                    {{form_row(form.image)}}
+                                {{form_end(form)}}
+                            </div>
+                            <h1>prout</h1>
+                        </td>
+                    </div>
+                {% endfor %} #} 
+            </tr>
+            <tr>
                 <th>Updated_at</th>
                 <td>{{ photo.updatedAt ? photo.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
             </tr>

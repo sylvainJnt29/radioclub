@@ -16,6 +16,7 @@
             <tr>
                 <th>Id</th>
                 <th>Image</th>
+                <th>Visuel</th>
                 <th>Updated_at</th>
                 <th>actions</th>
             </tr>
@@ -25,6 +26,7 @@
             <tr>
                 <td>{{ photo.id }}</td>
                 <td>{{ photo.image }}</td>
+                <td><div class="image_visu"><img src="{{asset('images/' ~ photo.image)}}" alt="" style="width: 200px;"></div></td>
                 <td>{{ photo.updatedAt ? photo.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     <a href="{{ path('photo_show', {'id': photo.id}) }}">show</a>
