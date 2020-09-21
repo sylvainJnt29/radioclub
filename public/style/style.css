@@ -7,3 +7,6 @@
 a,p{
      color:  rgb(0, 87, 128);
 }
+.boutons_crud{
+    vertical-align: auto;
+}

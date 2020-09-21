@@ -5,12 +5,24 @@
 {% block myTitle %}Edition de l'article{% endblock %}
 
 {% block body %}
+<div class="container">
+     <div class="text-center">
+         <img src="{{asset('images/' ~ article.image)}}" alt=""  style="height: 200px; width: 200px;">
+     </div>
 
-
-    {{ include('article/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
-
-    {{ include('article/_delete_form.html.twig') }}
-
-    <a href="{{ path('articles_admin') }}">Retour à la liste</a>
-    
+    <!-- La mep ne sert à rien :) -->
+    <div class="boutons_crud"> 
+        <div>
+            {{ include('article/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+        </div>
+        
+        <div>
+            {{ include('article/_delete_form.html.twig') }}
+        </div>
+        
+        <div>
+            <button class="btn btn-info"><a href="{{ path('articles_admin') }}">Retour à la liste</a></button>
+        </div>
+    </div>
+</div>  
 {% endblock %}

@@ -27,6 +27,16 @@ class ArticleRepository extends ServiceEntityRepository
         return $query->getQuery();
     }
 
+    // public function selectLasts3Articles() 
+    // {   
+    //     return $this->createQueryBuilder('a')
+
+    //     ->setMaxResults(3)
+    //     ->orderBy('a.id','DESC')
+    //     ;
+        
+    // }
+
     // /**
     //  * @return Article[] Returns an array of Article objects
     //  */

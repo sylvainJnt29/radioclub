@@ -1,6 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Contact index{% endblock %}
+{% block title %}Liste des contacts{% endblock %}
+
+{% block myTitle %}Liste des contacts{% endblock %}
+
 
 {% block body %}
 <div class="container">
@@ -9,15 +12,14 @@
                 {{message}}
             </div>
     {% endfor %}
-    <h1>Contact index</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Phone</th>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Téléphone</th>
                 <th>Email</th>
                 <th>Message</th>
                 <th>actions</th>
@@ -33,18 +35,18 @@
                 <td>{{ contact.email }}</td>
                 <td>{{ contact.message }}</td>
                 <td>
-                    <a href="{{ path('contact_show', {'id': contact.id}) }}">show</a>
-                    <a href="{{ path('contact_edit', {'id': contact.id}) }}">edit</a>
+                    <button class="btn btn-secondary"><a href="{{ path('contact_show', {'id': contact.id}) }}">Détails</a></button>
+                    {# <button class="btn btn-info"><a href="{{ path('contact_edit', {'id': contact.id}) }}">Editer</a></button> #}
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="7">no records found</td>
+                <td colspan="7">Pas de message enregistré dans la base de données</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('contact_new') }}">Create new</a>
+    <!-- Utilité d'un bouton de création? -->
+    <!-- <button class="btn btn-success"><a href="{{ path('contact_new') }}">Create new</a></button> -->
 </div>
 {% endblock %}

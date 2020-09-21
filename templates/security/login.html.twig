@@ -1,6 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Log in{% endblock %}
+
+{% block myTitle %}Log in{% endblock %}
+
 
 {% block body %}
 <form method="post">
@@ -10,14 +13,14 @@
 
     {% if app.user %}
         <div class="mb-3">
-            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+            Vous êtes connecté en tant que  {{ app.user.username }}, <a href="{{ path('app_logout') }}">Se déconnecter</a>
         </div>
     {% endif %}
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputUsername">Username</label>
+
+    <label for="inputUsername">Prénom</label>
     <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" required autofocus>
-    <label for="inputPassword">Password</label>
+    <label for="inputPassword" class="mt-2">Mot de passe</label>
     <input type="password" name="password" id="inputPassword" class="form-control" required>
 
     <input type="hidden" name="_csrf_token"
@@ -34,9 +37,10 @@
             </label>
         </div>
     #}
-
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
-    </button>
+    <div class="text-center mt-2">
+        <button class="btn btn-lg btn-info my-2" type="submit">
+            S'enregistrer
+        </button>
+    </div>
 </form>
 {% endblock %}

@@ -32,9 +32,9 @@
                 <td><div class="image_visu"><img src="{{asset('images/' ~ photo.image)}}" alt="" style="width: 200px;"></div></td>
                 <!-- <td>{{ photo.updatedAt ? photo.updatedAt|date('Y-m-d H:i:s') : '' }}</td> -->
                 <td>
-                    <a href="{{ path('photo_show', {'id': photo.id}) }}">Détails</a><br>
-                    <a href="{{ path('photo_edit', {'id': photo.id}) }}">Editer</a><br>
-                    <a href="{{ path('photo_new') }}">Créer</a>
+                    <button class="btn btn-secondary"><a href="{{ path('photo_show', {'id': photo.id}) }}">Détails</a></button><br>
+                    <button class="btn btn-info"><a href="{{ path('photo_edit', {'id': photo.id}) }}">Editer</a></button><br>
+                    <button class="btn btn-success"><a href="{{ path('photo_new') }}">Créer</a></button>
                 </td>
             </tr>
         {% else %}

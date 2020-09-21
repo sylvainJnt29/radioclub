@@ -25,6 +25,15 @@ class MainController extends AbstractController
         return $this->render('main/accueil.html.twig');
     }
 
+    //     /**
+    //  * @Route("/", name="accueil")
+    //  */
+    // public function indexEssaiPourAfficherLes3DerniersPosts(Request $request,ArticleRepository $articleRepository)
+    // {
+    //     $articleRepository->selectLasts3Articles();
+    //     return $this->render('main/accueil.html.twig');
+    // }
+
     /**
      * @Route("/contacter", name="contacter",methods="GET|POST")
      */
