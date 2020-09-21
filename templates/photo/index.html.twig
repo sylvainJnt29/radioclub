@@ -1,6 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Photo index{% endblock %}
+{% block title %}Administration des photos{% endblock %}
+
+{% block myTitle %}Les photos{% endblock %}
+
 
 {% block body %}
 <div class="container">
@@ -9,7 +12,7 @@
                 {{message}}
             </div>
         {% endfor %}
-    <h1>Photo index</h1>
+
 
     <table class="table">
         <thead>
@@ -17,7 +20,7 @@
                 <th>Id</th>
                 <th>Image</th>
                 <th>Visuel</th>
-                <th>Updated_at</th>
+                <!-- <th>Updated_at</th> -->
                 <th>actions</th>
             </tr>
         </thead>
@@ -27,20 +30,21 @@
                 <td>{{ photo.id }}</td>
                 <td>{{ photo.image }}</td>
                 <td><div class="image_visu"><img src="{{asset('images/' ~ photo.image)}}" alt="" style="width: 200px;"></div></td>
-                <td>{{ photo.updatedAt ? photo.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <!-- <td>{{ photo.updatedAt ? photo.updatedAt|date('Y-m-d H:i:s') : '' }}</td> -->
                 <td>
-                    <a href="{{ path('photo_show', {'id': photo.id}) }}">show</a>
-                    <a href="{{ path('photo_edit', {'id': photo.id}) }}">edit</a>
+                    <a href="{{ path('photo_show', {'id': photo.id}) }}">Détails</a><br>
+                    <a href="{{ path('photo_edit', {'id': photo.id}) }}">Editer</a><br>
+                    <a href="{{ path('photo_new') }}">Créer</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="4">Il n'y a pas de photos dans la base de données!</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('photo_new') }}">Create new</a>
+
 </div>
 {% endblock %}
