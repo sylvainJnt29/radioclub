@@ -12,11 +12,14 @@
                 <div class="col-4 p-1 m-0">
                     <div class="card h-100 ">
                         <a href="{{asset('images/' ~ article.image)}}" target="_blank"><img src="{{asset('images/' ~ article.image)}}" class="card-img-top" alt="..." style="max-height: 200px; max-width: 100%;"></a>
-                            <h5 class="card-title">{{article.title}}</h5>
-                            <h6 class="card-title">{{article.createdAt|format_datetime(locale='fr')}}</h6>
-                            <!-- <p class="card-text text-break">{{article.text}}</p> -->
-                            <p class="card-text text-break">{{article.text | truncate(8,'prout')}}</p>
-                            <p><a href="{{path('detailed_article', {'id': article.id}) }}">Lire la suite</a></p>
+                        <h5 class="card-title">{{article.title}}</h5>
+                        <h6 class="card-title">{{article.createdAt|format_datetime(locale='fr')}}</h6>
+                        <!-- <p class="card-text text-break">{{article.text}}</p> -->
+                        <p class="card-text text-break">{{article.text | truncate(8,'prout')}}</p>
+                        <input type="hidden" class="alternated_text" value="{{article.text}}">
+                        <a class="suite">Lire la suite</a>
+                        <a class="masquer">Masquer</a>
+                        <p><a href="{{path('detailed_article', {'id': article.id}) }}">Lire l'article complet</a></p>
                     </div>
                 </div>
             {% endfor %}
@@ -25,4 +28,9 @@
             {{knp_pagination_render(articles)}}
         </div>
 </div>
+{% endblock %}
+
+
+{% block javascripts %}
+<script src="{{ asset('style/lireSuite.js') }}"></script>
 {% endblock %}
