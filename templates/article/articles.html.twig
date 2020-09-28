@@ -14,13 +14,13 @@
                         <a href="{{asset('images/' ~ article.image)}}" target="_blank"><img src="{{asset('images/' ~ article.image)}}" class="card-img-top" alt="..." style="max-height: 200px; max-width: 100%;"></a>
                             <h5 class="card-title">{{article.title}}</h5>
                             <h6 class="card-title">{{article.createdAt|format_datetime(locale='fr')}}</h6>
-                            <p class="card-text text-break">{{article.text | truncate(10)}}</p>
-            
+                            <!-- <p class="card-text text-break">{{article.text}}</p> -->
+                            <p class="card-text text-break">{{article.text | truncate(8,'prout')}}</p>
+                            <p><a href="{{path('detailed_article', {'id': article.id}) }}">Lire la suite</a></p>
                     </div>
                 </div>
             {% endfor %}
         </div>
-
         <div class="pagination mt-4 justify-content-center">
             {{knp_pagination_render(articles)}}
         </div>

@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}F6KSV Bienvenue !{% endblock %}
+
+{% block myTitle %}L'article en détail{% endblock %}
+
+{% block body %}
+
+<div class="container">
+        <div class="row">
+            <div class="card h-100 ">
+                <a href="{{asset('images/' ~ article.image)}}" target="_blank"><img src="{{asset('images/' ~ article.image)}}" class="card-img-top" alt="..."></a>
+                <h5 class="card-title">{{article.title}}</h5>
+                <h6 class="card-title">{{article.createdAt|format_datetime(locale='fr')}}</h6>
+                <p class="card-text text-break">{{article.text}}</p>
+                {# <!-- <p class="card-text text-break">{{article.text | truncate(8,'prout')}}</p> --> #}
+                <button class="btn btn-info"><a href="{{path('articles')}}">Retour</a></button>
+            </div>
+        </div>
+</div>
+{% endblock %}

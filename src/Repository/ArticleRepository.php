@@ -30,7 +30,7 @@ class ArticleRepository extends ServiceEntityRepository
     public function selectLasts3Articles() 
     {   
         $query = $this->createQueryBuilder('a');
-        $query->orderBy('a.id','ASC');
+        $query->orderBy('a.id','DESC');
         $query->setMaxResults(3);
         return $query->getQuery()->execute();
         

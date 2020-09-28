@@ -7,10 +7,9 @@
         <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
         <script src="https://kit.fontawesome.com/22d71e1744.js" crossorigin="anonymous"></script>
         {% block stylesheets %}{% endblock %}
-
     </head>
     <body>
-        {# {{ render(controller("App\\Controller\\HeaderController::index")) }} #}
+         {# {{ render (controller ("App\\Controller\\HeaderController::index")) }} #}
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="{{path('accueil')}}">
                 <i class="fas fa-home"></i>
@@ -29,17 +28,17 @@
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Les articles</a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="{{path('articles')}}">Les articles</a>
-                        {# {% if user and (user.role.label == 'ROLE_ADMIN') %}    #}
+                         {# {% if user and (user.role == 'ROLE_ADMIN') %} #}    
                             <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{path('articles_admin')}}">Administration des articles</a>
                             </div>
-                        {# {% endif %}  #}
+                         {# {% endif %}  #}
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Les photos</a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="{{path('photos')}}">Les photos</a>
-                        {# {% if user and (user.role.label == 'ROLE_ADMIN') %} #}
+                        {# {% if user and (user.role == 'ROLE_ADMIN') %} #}
                             <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{path('photos_admin')}}">Administration des photos</a>
                             </div>
@@ -49,18 +48,18 @@
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Contact</a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="{{path('contacter')}}">Contact</a>
-                        {# {% if user and (user.role.label == 'ROLE_ADMIN') %}  #}
+                        {# {% if user and (user.role == 'ROLE_ADMIN') %}  #}
                             <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{path('contact_index')}}">Administration des contacts</a>
                             </div>
                         {# {% endif %}  #}
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{path('app_login')}}">Connexion</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{path('app_logout')}}">déconnexion</a>
-                    </li>
+                        <a name="login" id="login" class="nav-link" href="{{path('app_login')}}" >Se connecter</a>
+                          {# {% if user and (user.role == 'ROLE_ADMIN') %}  #} 
+                            <span class="" id="connection">
+                                <a name="login" id="login" class="nav-link" href="{{path('app_logout')}}" >Se déconnecter<br><p class="h6">{# ({{user.username}}) #}</p></a>
+                            </span>
+                        {# {% endif %} #}
                 </ul>
                 <!-- <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="text" placeholder="Chercher...">

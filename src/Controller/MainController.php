@@ -2,17 +2,19 @@
 
 namespace App\Controller;
 
+use App\Entity\Article;
 use App\Entity\Contact;
 use App\Form\ContactType;
+use App\Repository\RoleRepository;
+use App\Repository\UserRepository;
 use App\Repository\PhotoRepository;
 use App\Repository\ArticleRepository;
 use App\Repository\ContactRepository;
-use App\Repository\RoleRepository;
-use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\UtilisateurRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -29,12 +31,16 @@ class MainController extends AbstractController
         return $this->render('main/accueil.html.twig', compact('articles'));
     }
 
-    //     /**
-    //  * @Route("/", name="accueil")
-    //  */
-    // public function indexEssaiPourAfficherLes3DerniersPosts(Request $request,ArticleRepository $articleRepository)
-    // {
-    // }
+    /**
+     * @Route("/article/{id}", name="detailed_article", methods={"GET"})
+     */
+    public function detailedArticle(Article $article): Response
+    {
+       
+        return $this->render('article/detailed_article.html.twig',[
+            'article' => $article
+        ]);
+    }
 
     /**
      * @Route("/contacter", name="contacter",methods="GET|POST")
@@ -114,18 +120,18 @@ class MainController extends AbstractController
         return $this->render('pass/index.html.twig', ['pass'=>password_hash($pass, PASSWORD_DEFAULT)]);
     }
 
-    /**
-     * @Route("/prout")
-     */
-    public function prout(RoleRepository $roleRepo, UserRepository $userRepo, EntityManagerInterface $em){
-        $user = $userRepo->findOneBy(['id'=>1]);
-        $role = $roleRepo->findOneBy(['id'=>1]);
-        $user->addRole($role);
-        // dd($user, $role);
-        $res = $em->persist($user);
-        $em->flush();
-        return $this->render('pass/prout.html.twig', compact('user'));
-    }
+    // /**
+    //  * @Route("/prout")
+    //  */
+    // public function prout(RoleRepository $roleRepo, UserRepository $userRepo, EntityManagerInterface $em){
+    //     $user = $userRepo->findOneBy(['id'=>1]);
+    //     $role = $roleRepo->findOneBy(['id'=>1]);
+    //     $user->addRole($role);
+    //     // dd($user, $role);
+    //     $res = $em->persist($user);
+    //     $em->flush();
+    //     return $this->render('pass/prout.html.twig', compact('user'));
+    // }
 
 
 }

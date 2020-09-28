@@ -24,8 +24,16 @@ class AppExtension extends AbstractExtension
         foreach($chars as $char){
             $new_string .= $char;
         }
-        $new_string .= '...';
+            
+        $new_string .= '...' ;
         return $new_string;
     }
+
+    // public function linkTruncateArticle()
+    // {
+    //     if (truncate){
+    //         <a href="{{path('detailed_article')}}"></a>
+    //     }
+    // }
 }
 ?>
