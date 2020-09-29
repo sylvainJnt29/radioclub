@@ -6,7 +6,7 @@
 
 {% block body %}
     <div class="container mt-3">
-        <a href="{{asset('images/logo_final.png')}}" target="_blank"><img src="{{asset('images/logo_final.png')}}" alt="Logo f6ksv" class="d-block w-100"></a>
+        <a href="{{asset('images/logo_final_reduction.png')}}" target="_blank"><img src="{{asset('images/logo_final_reduction.png')}}" alt="Logo f6ksv" class="d-block w-100"></a>
     </div>
     <div class="container mt-3">
         <h2>Présentation</h2>
@@ -56,7 +56,7 @@
  
                  <div class="col mb-4">
                     <div class="card h-100">
-                        <a href="{{asset('images/' ~ article.image )}}" target="_blank"><img src="{{asset('images/' ~ article.image)}}" class="card-img-top" alt="..."></a>
+                        <a href="{{asset('images/' ~ article.image )}}" target="_blank"><img src="{{asset('images/' ~ article.image)}}" class="card-img-top" alt="..." style="max-height: 200px; max-width: 100%;"></a>
                             <div class="card-body">
                                 <h5 class="card-title">{{article.title}}</h5>
                                 <h4 class="card-title">{{article.createdAt | format_datetime(locale='fr')}}</h4>

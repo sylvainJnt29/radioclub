@@ -54,13 +54,19 @@
                             </div>
                         {# {% endif %}  #}
                     </li>
-                        <a name="login" id="login" class="nav-link" href="{{path('app_login')}}" >Se connecter</a>
-                          {# {% if user and (user.role == 'ROLE_ADMIN') %}  #} 
-                            <span class="" id="connection">
-                                <a name="login" id="login" class="nav-link" href="{{path('app_logout')}}" >Se déconnecter<br><p class="h6">{# ({{user.username}}) #}</p></a>
-                            </span>
-                        {# {% endif %} #}
                 </ul>
+                    <div id="connect_color">
+                            {% if app.user %}
+                                <div>
+                                    Vous êtes connecté en tant que  {{ app.user.username }}, <a href="{{ path('app_logout') }}">Se déconnecter</a>
+                                </div>
+                            {% else %}
+                                <div>
+                                    <a name="login" id="login" class="nav-link" href="{{path('app_login')}}" >Se connecter</a>
+                                </div>
+                            {% endif %}
+
+                    </div>
                 <!-- <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="text" placeholder="Chercher...">
                     <button class="btn btn-secondary my-2 my-sm-0" type="submit">GO !</button>

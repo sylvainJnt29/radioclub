@@ -6,15 +6,15 @@
 
 {% block body %}
 
-<div class="container">
-        <div class="row">
+<div class="container mt-5">
+        <div class="row my-5">
             <div class="card h-100 ">
                 <a href="{{asset('images/' ~ article.image)}}" target="_blank"><img src="{{asset('images/' ~ article.image)}}" class="card-img-top" alt="..."></a>
                 <h5 class="card-title mt-2">{{article.title}}</h5>
                 <h6 class="card-title">{{article.createdAt|format_datetime(locale='fr')}}</h6>
                 <p class="card-text text-break">{{article.text}}</p>
                 {# <!-- <p class="card-text text-break">{{article.text | truncate(8,'prout')}}</p> --> #}
-                <button class="btn btn-info"><a href="{{path('articles')}}">Retour</a></button>
+                <button class="btn btn-info mt-3"><a href="{{path('articles')}}">Retour</a></button>
             </div>
         </div>
 </div>
